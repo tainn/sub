@@ -2,13 +2,13 @@ services:
   sub-si:
     build:
       context: .
-    image: sub-si:0.1.14
+    image: sub-si:0.1.15
     container_name: sub-si
     restart: unless-stopped
     networks:
       - ext
     ports:
-      - "80"
+      - "5080:80"
     labels:
       - "tainn.type=app"
       - "traefik.enable=true"
