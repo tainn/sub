@@ -2,13 +2,13 @@ services:
   sub:
     build:
       context: .
-    image: sub:0.1.17
+    image: sub:0.1.19
     container_name: sub
     restart: unless-stopped
     networks:
       - ext
     ports:
-      - "5080:80"
+      - "50014:80"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.apex.rule=Host(`sub.si`)"
