@@ -3,7 +3,7 @@ services:
     build:
       context: "."
       dockerfile: "Containerfile"
-    image: "sub:0.1.20"
+    image: "sub:0.1.21"
     container_name: "sub"
     restart: "unless-stopped"
     networks:
@@ -14,9 +14,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.apex.rule=Host(`sub.si`)"
       - "traefik.http.routers.apex.entrypoints=websecure"
-      - "traefik.http.routers.axumtype.tls.certresolver=cloudflare"
-      - "traefik.http.routers.axumtype.tls.domains[0].main=sub.si"
-      - "traefik.http.routers.axumtype.tls.domains[0].sans=*.sub.si"
+      - "traefik.http.routers.apex.tls.certresolver=cloudflare"
+      - "traefik.http.routers.apex.tls.domains[0].main=sub.si"
+      - "traefik.http.routers.apex.tls.domains[0].sans=*.sub.si"
       - "traefik.http.services.apex.loadbalancer.server.port=80"
 
 networks:
