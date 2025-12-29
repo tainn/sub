@@ -1,19 +1,22 @@
 services:
   sub:
     build:
-      context: .
-    image: sub:0.1.19
-    container_name: sub
-    restart: unless-stopped
+      context: "."
+      dockerfile: "Containerfile"
+    image: "sub:0.1.20"
+    container_name: "sub"
+    restart: "unless-stopped"
     networks:
-      - ext
+      - "ext"
     ports:
       - "50014:80"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.apex.rule=Host(`sub.si`)"
       - "traefik.http.routers.apex.entrypoints=websecure"
-      - "traefik.http.routers.apex.tls.certresolver=apex"
+      - "traefik.http.routers.axumtype.tls.certresolver=cloudflare"
+      - "traefik.http.routers.axumtype.tls.domains[0].main=sub.si"
+      - "traefik.http.routers.axumtype.tls.domains[0].sans=*.sub.si"
       - "traefik.http.services.apex.loadbalancer.server.port=80"
 
 networks:
